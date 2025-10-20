@@ -1,4 +1,4 @@
-public class Carrera<Estudiante> {
+public class Carrera<E> {
     private String nombre;
     private Estudiante[] estudiantes;
     private int contadorE;
@@ -47,3 +47,4 @@ public class Carrera<Estudiante> {
     
 
 }
+
