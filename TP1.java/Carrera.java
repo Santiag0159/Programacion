@@ -2,12 +2,14 @@ public class Carrera<Estudiante> {
     private String nombre;
     private Estudiante[] estudiantes;
     private int contadorE;
-    
+
+    //Constructor
     public Carrera(String nombre, int Maxcap){
         this.nombre = nombre;
         this.estudiantes = new Estudiante[Maxcap];
         this.contadorE = 0;
     }
+    //Agregar estudiante
     public void agregarEstudiante(Estudiante estudiante){
         if(contadorE < estudiantes.length){
             this.estudiantes[contadorE] = estudiante;
@@ -17,6 +19,7 @@ public class Carrera<Estudiante> {
             System.err.println("La carrera " + this.nombre + " alcanzo su capacidad maxima.");
         }
     }
+    //Listar estudiantes
     public void listarEstudiantes(){
         System.out.println("Listado de estudiantes en la carrera " + this.nombre);
         for(int i = 0; i < contadorE; i++){
@@ -28,6 +31,7 @@ public class Carrera<Estudiante> {
             System.out.println("No hay estudiantes en esta carrera...");
         }
     }
+    //Buscar estudiantes
     public Estudiante buscarEstudiante(String nombreBuscado){
         String nombreBuscadom = nombreBuscado.toLowerCase();
         for(int i = 0; i < contadorE; i++){
@@ -41,4 +45,5 @@ public class Carrera<Estudiante> {
     }
     public String getNombre(){return nombre;}
     
+
 }
