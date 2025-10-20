@@ -1,17 +1,22 @@
 public class Universidad{
+    //Atributos
     private String nombre;
     private String direccion;
     private MiembroUniversidad[] miembros;
     private int contadorMiembros;
     private static final int MAX_MIEMBROS = 100;
+
+    //Constructor
     public Universidad(String nombre, String direccion){
         this.nombre = nombre;
         this.direccion = direccion;
         this.miembros = new MiembroUniversidad[MAX_MIEMBROS];
         this.contadorMiembros = 0;
     }
+    //Métodos getter
     public String getNombre(){return nombre;}
     public String getDireccion(){return direccion;}
+    //Métodos setter
     public void setNombre(String nombre){this.nombre = nombre;}
     public void setDireccion(String direccion){this.direccion = direccion;}
     public void agregarMiembro(MiembroUniversidad nuevoMiembro){
@@ -23,6 +28,7 @@ public class Universidad{
             System.out.println("Error: La universidad alzanzo el limite de " + MAX_MIEMBROS + "miembros");
         }
     }
+    //Constructor
     public Estudiante[] obtenerEstudiantes(){
         int cont = 0;
         for(int i=0; i < contadorMiembros; i++){
@@ -39,6 +45,7 @@ public class Universidad{
         }
         return estudiantes;
     }
+    
     public int contarEstudiantesIterativo(String carrera){
         int contador = 0;
         for(int i=0; i < contadorMiembros; i++){
@@ -69,6 +76,7 @@ public class Universidad{
         }
         return contadorActual + contarEstudiantesRecursivo(miembros, carrera, indice + 1, limite);
     }
+    //Listar miembros
     public void listarTodosLosMiembros(){
         if(contadorMiembros == 0){
             System.out.println("No hay miembros en la Universidad");
@@ -80,6 +88,7 @@ public class Universidad{
             System.out.println(" "+ miembro.obtenerRol() + ": " + miembro.obtenerInformacionCompleta());
         }
     }
+    //Buscar miembros por rol
     public void buscarMiembrosPorRol(String rol){
         System.out.println("Buscando miembros con rol: " + rol);
         boolean encontrado = false;
@@ -94,6 +103,7 @@ public class Universidad{
             System.out.println("No se encontraron miembros con el rol: " + rol);
         }
     }
+    //Búsqueda iterativa
     public Estudiante buscarEstudianteIterativo(String documento){
         for(int i=0; i < contadorMiembros; i++){
             MiembroUniversidad miembro = miembros[i];
@@ -106,6 +116,7 @@ public class Universidad{
         }
         return null;
     }
+    //Búsqueda recursiva
     public Estudiante buscarEstudianteRecursivo(String documento){
         Estudiante[] estudiantes = obtenerEstudiantes();
         if(estudiantes.length == 0){
@@ -125,6 +136,7 @@ public class Universidad{
         }
         return buscarEstudianteRecursivo(estudiantes, documento, indice + 1);
     }
+    //Ordenar por apellido
     public static Estudiante[] ordenarPorApellido(Estudiante[] estudiantes){
         int n=estudiantes.length;
         for(int i=0; i<n-1; i++){
@@ -142,6 +154,7 @@ public class Universidad{
       }
         return estudiantes;
     }
+    //Búsqueda binaria
     public Estudiante buscarEstudianteBinario(String apellido){
         Estudiante[] estudiantes = obtenerEstudiantes();
         if(estudiantes.length == 0){
@@ -155,6 +168,7 @@ public class Universidad{
             return null;
         }
     }
+    //Búsqueda binaria
     public static int busquedaBinariaEstudiante(Estudiante[] estudiantes, String apellido){
         int izquierda = 0;
         int derecha = estudiantes.length -1;
@@ -175,4 +189,5 @@ public class Universidad{
     public String toString(){
         return "Universidad (Nombre: "+ nombre + ". Direccion: " + direccion + ". Total miembros: " + contadorMiembros + ")";
     }
+
 }
