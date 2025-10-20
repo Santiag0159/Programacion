@@ -3,13 +3,19 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     private double promedio;
     private Materia[] materias;
     private int contadorMaterias;
+
+    //Métodos getter
     private static final int MAX_MATERIAS = 100;
     public String getCarrera() { return carrera; }
     public double getPromedio() { return promedio; }
     public Materia[] getMaterias(){return materias;}
-    public void setCarrera(String carrera) { this.carrera = carrera; }
-    public void setPromedio(double promedio) { this.promedio = promedio; }
     public int getContadorMaterias(){return contadorMaterias;}
+    
+    //Métodos setter
+    public void setCarrera(String carrera) {this.carrera = carrera;}
+    public void setPromedio(double promedio) {this.promedio = promedio;}
+
+    //Recursividad
     public double calcularPromedioRecursivo(){
         if(contadorMaterias == 0){
             return 0.0;
@@ -68,4 +74,5 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     public String obtenerInformacionCompleta(){
         return this.toString();
     }
+
 }
