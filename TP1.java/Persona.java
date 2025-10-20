@@ -1,12 +1,16 @@
 public class Persona{
+    //Atributos
     private String nombre;
     private String apellido;
     private int edad;
     private String documento;
+    //Métodos getter
     public String getNombre(){return nombre;}
     public String getApellido(){return apellido;}
     public int getEdad(){return edad;}
     public String getDocumento(){return documento;}
+
+    //Métodos setter
     public void setNombre(String nombre){
         if(nombre.length() > 0){
             this.nombre = nombre;
@@ -17,6 +21,8 @@ public class Persona{
         if (edad < 16){System.err.println("La edad no puede ser menor a 16");}
         else{this.edad = edad;}}
     public void setDocumento(String documento){this.documento = documento;}
+
+    //Constructor
     public Persona(String nombre, String apellido, int edad, String documento){
         this.nombre = nombre;
         this.apellido = apellido;
@@ -27,6 +33,7 @@ public class Persona{
     public String toString(){
         return "Persona [nombre: "+ nombre + "apellido: "+ apellido + "edad: "+ edad + "Documento: "+ documento +"]";
     }
+    //equals()
     @Override
     public boolean equals(Object o){
         if(this == o) return true;
@@ -34,8 +41,10 @@ public class Persona{
         Persona persona = (Persona) o;
         return documento.equals(persona.documento);
     }
+    //hashCode()
     @Override
     public int hashCode(){
         return documento.hashCode();
     }
+
     }
