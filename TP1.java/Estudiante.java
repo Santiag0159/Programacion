@@ -33,6 +33,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
         }
         return materias[indice].getCalificacion() + calcularPromedioRecursivo(materias, indice + 1);
     }
+    //Iteratividad
     public double calcularPromedioIterativo(){
         if(contadorMaterias == 0){
             return 0.0;
@@ -42,6 +43,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
         }
         return suma / contadorMaterias;
     }
+    //Inscribir materias
     public boolean inscribirMateria(Materia materia){
         if(contadorMaterias < MAX_MATERIAS){
             this.materias[contadorMaterias] = materia;
@@ -52,6 +54,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
             return false;
         }
     }
+    //Constructor
     public Estudiante(String nombre, String apellido, int edad, String documento, String carrera, double promedio){
         super(nombre, apellido, edad, documento);
         this.carrera = carrera;
@@ -59,6 +62,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
         this.materias = new Materia[MAX_MATERIAS];
         this.contadorMaterias = 0;
     }
+    
     @Override
     public String toString(){
         return "Estudiante [" + super.toString() + 
@@ -66,6 +70,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
                ", Promedio: " + promedio + 
                ", Total Materias: " + contadorMaterias + "]";
     }
+    //Aplicando interfaz
     @Override
     public String obtenerRol(){
         return "Estudiante";
@@ -76,3 +81,4 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     }
 
 }
+
