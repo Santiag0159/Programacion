@@ -1,19 +1,21 @@
 public class Profesor extends Persona implements MiembroUniversidad{
+    //Atributos
     private String especialidad;
     private int experiencia;
     private Materia[] materiasAsignadas;
     private int contadorMateriasAsignadas;
     private static final int MAX_MATERIAS = 100;
+
+    //Métodos getter
     public String getEspecialidad(){return especialidad;}
     public int getExperiencia(){return experiencia;}
     public Materia[] getMateriasAsignadas(){return materiasAsignadas;}
     public int getContadorMateriasAsignadas(){return contadorMateriasAsignadas;}
-    public void setEspecialidad(String especialidad){
-        this.especialidad = especialidad;
-    }
-    public void setExperiencia(int experiencia){
-        this.experiencia = experiencia;
-    }
+
+    //Métodos setter
+    public void setEspecialidad(String especialidad){this.especialidad = especialidad;}
+    public void setExperiencia(int experiencia){this.experiencia = experiencia;}
+    //Constructor
     public Profesor(String nombre, String apellido, int edad, String documento, String especialidad, int experiencia){
         super(nombre, apellido, edad, documento);
         this.especialidad = especialidad;
@@ -21,6 +23,7 @@ public class Profesor extends Persona implements MiembroUniversidad{
         this.materiasAsignadas = new Materia[MAX_MATERIAS];
         this.contadorMateriasAsignadas = 0;
     }
+    //Asignar materias
     public boolean asignarMateria(Materia materia){
         if(contadorMateriasAsignadas < MAX_MATERIAS){
             this.materiasAsignadas[contadorMateriasAsignadas]= materia; 
@@ -32,6 +35,7 @@ public class Profesor extends Persona implements MiembroUniversidad{
             return false;
         }
     }
+    //Interfaz
     @Override 
     public String toString(){
         return "Profesor (" + super.toString() + ". Especialidad: "+ especialidad + 
@@ -45,4 +49,5 @@ public class Profesor extends Persona implements MiembroUniversidad{
     public String obtenerInformacionCompleta(){
         return this.toString();
     }
+
 }
