@@ -28,7 +28,7 @@ public class Profesor extends Persona implements MiembroUniversidad{
 
     @Override 
     public String toString(){
-        int totalAsignadas = materiasAsignadas.getTamaño();
+        int totalAsignadas = materiasAsignadas.getCantidad();
         return "Profesor (" + super.toString() + ". Especialidad: "+ especialidad + 
         ". Experiencia: "+ experiencia + ". Materias Asignadas: " + totalAsignadas + ")";
     }

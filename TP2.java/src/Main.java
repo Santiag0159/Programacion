@@ -9,25 +9,25 @@ public class Main{
         Materia PDP = new Materia("Paradigma de la programacion", "PDP", 5, 0.0, null);
         //Nuevos Estudiantes....
         Estudiante santiago = new Estudiante
-        ("Santiago", "Morales", 23, "43765597", nombreCarrera, 7.1);
+        ("Santiago ", "Morales ", 23, "43765597 ", nombreCarrera, 7.1);
         santiago.inscribirMateria
-        (new Materia("Programacion", "PROG1", 4, 7.0, null));
+        (new Materia("Programacion ", " PROG1 ", 4, 7.0, null));
         santiago.inscribirMateria
-        (new Materia("Paradigma de la Programacion", "PDP", 5, 8.5, null));
+        (new Materia("Paradigma de la Programacion ", " PDP ", 5, 8.5, null));
         //Estudiante 2
         Estudiante noelia = new Estudiante
-        ("Noelia", "Gonzalez", 24, "43222111", nombreCarrera, 9.0 );
+        ("Noelia ", " Gonzalez ", 24, " 43222111 ", nombreCarrera, 9.0 );
         noelia.inscribirMateria
-        (new Materia("Programacion", "PROG1", 4, 7.0, null));
+        (new Materia(" Programacion ", " PROG1 ", 4, 7.0, null));
         noelia.inscribirMateria
-        (new Materia("Paradigma de la programacion", "PDP", 5, 8.5, null));
+        (new Materia(" Paradigma de la programacion ", " PDP ", 5, 8.5, null));
         //Estudiante 3
         Estudiante ricardo = new Estudiante
-        ("Ricardo", "Tapia", 21, "45666777", nombreCarrera, 10);
+        ("Ricardo ", " Tapia ", 21, " 45666777 ", nombreCarrera, 10);
         ricardo.inscribirMateria
-        (new Materia("Programacion","PROG1", 4, 10, null));
+        (new Materia("Programacion ","PROG1", 4, 10, null));
         ricardo.inscribirMateria
-        (new Materia("Paradigma de la Programacion", "PDP", 5, 10, null));
+        (new Materia("Paradigma de la Programacion ", "PDP", 5, 10, null));
         //Nuevos Profesores...
         Profesor rodrigo = new Profesor
         ("Rodrigo", "Silva", 30, "40111222", "Profesor de programacion", 5);
@@ -42,12 +42,12 @@ public class Main{
         ("Faustino", "Perez", 39, "40333444", "Administrativo", "Recepcionista", "03/05/2020");
         //Miembros Universidad...
         System.out.println("Miembros de la univesidad");
-        Unvime.agregarMiembro(santiago);
-        Unvime.agregarMiembro(noelia);
-        Unvime.agregarMiembro(ricardo);
-        Unvime.agregarMiembro(rodrigo);
-        Unvime.agregarMiembro(walter);
-        Unvime.agregarMiembro(faustino);
+        Unvime.agregarMiembro(santiago );
+        Unvime.agregarMiembro(noelia );
+        Unvime.agregarMiembro(ricardo );
+        Unvime.agregarMiembro(rodrigo );
+        Unvime.agregarMiembro(walter );
+        Unvime.agregarMiembro(faustino );
         //Ver todos los miembros...
         System.out.println("Todos los miembros, generales");
         Unvime.listarTodosLosMiembros();
@@ -62,14 +62,14 @@ public class Main{
         Unvime.buscarMiembrosPorRol("Profesor");
         Unvime.buscarMiembrosPorRol("Personal");
         System.out.println("Busqueda binaria de miembros: ");
-        Estudiante encontrado = Unvime.buscarEstudianteBinario("Ricardo", "Tapia");
+        Estudiante encontrado = Unvime.buscarEstudianteRecursivo("Santiago");
         if(encontrado != null){
             System.out.println("Estudiante encontrado: " + encontrado.getNombre() + " " + encontrado.getApellido());
         } else {
             System.out.println("Estudiante no encontrado");
         }
         System.out.println("Busqueda binaria apellido: ");
-        Estudiante encontradoApellido = Unvime.buscarEstudianteBinarioPorApellido("Marquez");
+        Estudiante encontradoApellido = Unvime.buscarEstudianteIterativo("Marquez");
         if(encontradoApellido != null){
             System.out.println("Estudiante encontrado: " + encontradoApellido.getNombre() + " " + encontradoApellido.getApellido());
         } else {

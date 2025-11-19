@@ -12,7 +12,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     public void setMaterias(ListaEnlazada materias) { this.materias = materias; }
 
     public double calcularPromedioRecursivo(){
-        int totalMaterias = this.materias.getTamaño();
+        int totalMaterias = this.materias.getCantidad();
         if (totalMaterias == 0){
             return 0.0;
         }
@@ -29,7 +29,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     }
 
     public double calcularPromedioIterativo(){
-        int totalMaterias = materias.getTamaño();
+        int totalMaterias = materias.getCantidad();
         if (totalMaterias == 0){
             return 0.0;
         }
@@ -59,7 +59,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     @Override
     // si es v o f;
     public String toString(){
-        int totalMaterias = materias != null ? materias.getTamaño() : 0;
+        int totalMaterias = materias != null ? materias.getCantidad() : 0;
 
         return "Estudiante [" + super.toString() + 
                ", Carrera: " + carrera + 

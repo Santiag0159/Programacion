@@ -3,7 +3,6 @@ public class Universidad{
     private String direccion;
     private ListaEnlazada miembros;
 
-
     public Universidad(String nombre, String direccion){
         this.nombre = nombre;
         this.direccion = direccion;
@@ -64,7 +63,7 @@ public class Universidad{
     }
 
     public void listarTodosLosMiembros(){
-        int totalMiembros = miembros.getTamaño();
+        int totalMiembros = miembros.getCantidad();
         if(totalMiembros == 0){
             System.out.println("No hay miembros en la universidad.");
             return;
@@ -78,7 +77,7 @@ public class Universidad{
         }
     }
     public void buscarMiembrosPorRol(String rol){
-        int totalMiembros = miembros.getTamaño();
+        int totalMiembros = miembros.getCantidad();
         if(totalMiembros == 0){
             System.out.println("No hay miembros registrados en la universidad...");
             return;
@@ -99,7 +98,6 @@ public class Universidad{
             System.out.println("No se encontraron miembros con el rol: " + rol);
         }
     }
-
     public Estudiante buscarEstudianteIterativo(String documento){
         Nodo actual = miembros.getInicio();
         while(actual != null){
@@ -199,7 +197,7 @@ public class Universidad{
 
     @Override
     public String toString(){
-        int contadorMiembros = miembros.getTamaño();
+        int contadorMiembros = miembros.getCantidad();
         return "Universidad (Nombre: "+ nombre + ". Direccion: " + direccion + ". Total miembros: " + contadorMiembros + ")";
     }
 }
