@@ -1,5 +1,5 @@
 public class Main{
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         Universidad Unvime = new Universidad
         ("UNVIME", "Avenida siempre viva 123");//No me se la calle real
         String nombreCarrera = "Programador Universitario en sistemas"; //Pongo nombreCarrera para mas comodidad
@@ -62,15 +62,15 @@ public class Main{
         Unvime.buscarMiembrosPorRol("Profesor");
         Unvime.buscarMiembrosPorRol("Personal");
         //Busqueda binaria...
-        System.out.println("Busqueda binaria de miembros: ");
-        Estudiante encontrado = Unvime.buscarEstudianteBinario("Ricardo", "Tapia");
-        if(encontrado != null){
-            System.out.println("Estudiante encontrado: " + encontrado.getNombre() + " " + encontrado.getApellido());
+        System.out.println("Busqueda binaria documento: "); 
+        Estudiante encontradoDocumento = Unvime.buscarEstudianteRecursivo("43222111");{
+        if(encontradoDocumento != null){
+            System.out.println("Estudiante encontrado: " + encontradoDocumento.getNombre() + " " + encontradoDocumento.getApellido());
         } else {
             System.out.println("Estudiante no encontrado");
         }
         System.out.println("Busqueda binaria apellido: ");
-        Estudiante encontradoApellido = Unvime.buscarEstudianteBinarioPorApellido("Marquez");
+        Estudiante encontradoApellido = Unvime.buscarEstudianteRecursivo("Marquez");
         if(encontradoApellido != null){
             System.out.println("Estudiante encontrado: " + encontradoApellido.getNombre() + " " + encontradoApellido.getApellido());
         } else {
@@ -83,14 +83,18 @@ public class Main{
         santiago.getTareasPendientes().insertar(tarea1);
         santiago.getTareasPendientes().insertar(tarea2);
 
-        Tarea verProximatarea = (Tarea) santiago.verProximatarea();
+        // Ver y completar tareas pendientes
+
+        santiago.verUltimaTareaPendiente();
+        Tarea verProximatarea = santiago.verProximatarea();
         System.out.println("Proxima tarea de " + santiago.getNombre() + ": " + verProximatarea.getDescripcion());
         santiago.completarUltimaTarea();
         System.out.println("Tarea completada. Proxima tarea de " + santiago.getNombre() + ": " + ((Tarea)santiago.verProximatarea()).getDescripcion());
         // Consultas a profesores
         System.out.println("Consultas de estudiantes a profesores");
-        TurnoConsulta consulta1 = new TurnoConsulta(santiago, "Duda sobre TP3", "21:00", "30 minutos");
-        TurnoConsulta consulta2 = new TurnoConsulta(noelia, "Duda sobre Parcial", "22:00", "10 minutos");
+        
+        TurnoConsulta consulta1 = new TurnoConsulta("Santiago", "Duda sobre TP3", "21:00", "30 minutos");
+        TurnoConsulta consulta2 = new TurnoConsulta("Noelia", "Duda sobre Parcial", "22:00", "10 minutos");
 
         rodrigo.agregarConsulta(consulta1);
         walter.agregarConsulta(consulta2);  
@@ -101,19 +105,20 @@ public class Main{
         TurnoConsulta atendida = walter.atenderSiguienteEstudiante();
         System.out.println("Consulta atendida por " + walter.getNombre() + ": " + atendida.getMotivo());
         //Consulta cambio notas
-        CambioNota cambio1 = new CambioNota(ricardo.getDocumento(),
-        4, 10, 9.5,"2025-11-19");
-        CambioNota cambio2 = new CambioNota(noelia.getDocumento(),
-        5, 8.5, 9.0,"2025-11-20");
+        CambioNota cambio1 = new CambioNota(43765597, 4, 8.5, 9.5, "20/11/2025" );
+        CambioNota cambio2 = new CambioNota(43765597, 4, 9.3, 10.00, "21/11/2025" );
+        System.out.println("Solicitudes de cambio de nota");
+        System.out.println(cambio1.toString());
+        System.out.println(cambio2.toString());
         //Solicitud de Inscripcion 
-        SolicitudInscripcion solicitud1 = new SolicitudInscripcion(
-            "Estudiante"+Santiago.getNombre(), "Base de datos", "2025-10-01", EstadoSolicitud.PENDIENTE
-        );
-        SolicitudInscripcion solicitud2 = new SolicitudInscripcion(
-            "Estudiante"+Noelia.getNombre(), "Ingles II", "2025-10-02", EstadoSolicitud.ACEPTADA
-        );
-        SolicitudInscripcion solicitud3 = new SolicitudInscripcion(
-            "Estudiante"+Ricardo.getNombre(), "Programacion I", "2025-10-03", EstadoSolicitud.RECHAZADA
-        );
+        SolicitudInscripcion solicitud1 = new SolicitudInscripcion("santiago", "PROG1", 20.11, EstadoSolicitud.PENDIENTE);
+        SolicitudInscripcion solicitud2 = new SolicitudInscripcion("noelia", "PDP", 21.11, EstadoSolicitud.PENDIENTE);
+        //Gestor de Inscripciones
+        GestorInscripciones gestor = new GestorInscripciones();
+        gestor.agregarSolicitud(solicitud1);
+        gestor.agregarSolicitud(solicitud2);
+        System.out.println("Cantidad de solicitudes pendientes: " + gestor.cantidadSolicitudesPendientes());
+        
     }
+   }
 }

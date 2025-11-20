@@ -8,7 +8,6 @@ public class Tarea{
     private String materia;
     private String fechaLimite;
     private Prioridad prioridad;
-    
     // Getters
     public String getDescripcion(){return descripcion;}
     public String getMateria(){return materia;}

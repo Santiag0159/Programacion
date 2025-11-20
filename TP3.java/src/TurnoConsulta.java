@@ -3,7 +3,6 @@ public class TurnoConsulta{
     private String motivo;
     private String horaLlegada;
     private String duracionEstimada;
-
     // Getters
     public String getEstudiante(){return estudiante;}
     public String getMotivo(){return motivo;}

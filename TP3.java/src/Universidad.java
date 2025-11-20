@@ -2,8 +2,6 @@ public class Universidad{
     private String nombre;
     private String direccion;
     private ListaEnlazada miembros;
-
-
     public Universidad(String nombre, String direccion){
         this.nombre = nombre;
         this.direccion = direccion;
@@ -29,7 +27,6 @@ public class Universidad{
         }
         return estudiantes;
     }
-
     public int contarEstudiantesIterativo(String carrera){
         int contador = 0;
         Nodo actual = miembros.getInicio();
@@ -62,9 +59,8 @@ public class Universidad{
         }
         return contador + contarEstudiantesRecursivo(actual.getSiguiente(), carrera);
     }
-
     public void listarTodosLosMiembros(){
-        int totalMiembros = miembros.getTamaño();
+        int totalMiembros = miembros.getCantidad();
         if(totalMiembros == 0){
             System.out.println("No hay miembros en la universidad.");
             return;
@@ -78,7 +74,7 @@ public class Universidad{
         }
     }
     public void buscarMiembrosPorRol(String rol){
-        int totalMiembros = miembros.getTamaño();
+        int totalMiembros = miembros.getCantidad();
         if(totalMiembros == 0){
             System.out.println("No hay miembros registrados en la universidad...");
             return;
@@ -99,7 +95,6 @@ public class Universidad{
             System.out.println("No se encontraron miembros con el rol: " + rol);
         }
     }
-
     public Estudiante buscarEstudianteIterativo(String documento){
         Nodo actual = miembros.getInicio();
         while(actual != null){
@@ -119,7 +114,6 @@ public class Universidad{
     public Estudiante buscarEstudianteRecursivo(String documento){
         return buscarEstudianteRecursivo(miembros.getInicio(), documento);
     }
-
     public static Estudiante buscarEstudianteRecursivo
     (Nodo actual, String documento){
         if(actual == null){
@@ -134,7 +128,6 @@ public class Universidad{
         }
         return buscarEstudianteRecursivo(actual.getSiguiente(), documento);
     }
-
     // Convierte la lista enlazada de estudiantes en un array
     public Estudiante[] arrayEstudiantes(){
         int contar = 0;
@@ -158,7 +151,6 @@ public class Universidad{
         }
         return arrayEstudiantes;
     }
-
     public static Estudiante[] ordenarApellidos(Estudiante[] estudiantes){
         int x = estudiantes.length;
         for(int y = 0; y < x - 1; y++){
@@ -176,7 +168,6 @@ public class Universidad{
         int izquierda = 0;
         int derecha = estudiantes.length - 1;
         boolean encontrado = false;
-
         while(izquierda <= derecha){
             int medio = izquierda + (derecha - izquierda) / 2;
             int comparacion = estudiantes[medio].getApellido().compareToIgnoreCase(Apellido);
@@ -196,10 +187,9 @@ public class Universidad{
             System.out.println("Estudiante con apellido " + Apellido + " no encontrado.");
         }
     }
-
     @Override
     public String toString(){
-        int contadorMiembros = miembros.getTamaño();
+        int contadorMiembros = miembros.getCantidad();
         return "Universidad (Nombre: "+ nombre + ". Direccion: " + direccion + ". Total miembros: " + contadorMiembros + ")";
     }
 }

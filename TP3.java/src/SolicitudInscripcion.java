@@ -19,7 +19,7 @@ public class SolicitudInscripcion{
     public void setFechaSolicitud(double fechaSolicitud){this.fechaSolicitud = fechaSolicitud;}
     public void setEstado(EstadoSolicitud estado){this.estado = estado;}
     // Constructor
-    public SolicitudInscripcion(String estudiante, String materia, double fechaSolicitud, String estado){
+    public SolicitudInscripcion(String estudiante, String materia, double fechaSolicitud, EstadoSolicitud estado){
         this.estudiante = estudiante;
         this.materia = materia;
         this.fechaSolicitud = fechaSolicitud;

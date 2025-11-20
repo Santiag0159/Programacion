@@ -8,7 +8,6 @@ public class Profesor extends Persona implements MiembroUniversidad{
     public int getExperiencia(){return experiencia;}
     public ListaEnlazada getMateriasAsignadas(){return materiasAsignadas;}
     public Cola getColaConsultas(){return colaConsultas;}
-
     public void setEspecialidad(String especialidad){
         this.especialidad = especialidad;
     }
@@ -29,18 +28,18 @@ public class Profesor extends Persona implements MiembroUniversidad{
         materiasAsignadas.agregar(materia);
         return true;
     }
-    public void agregarConsulta(Consulta consulta){
-        colaConsultas.agregar(consulta);
+    public void agregarConsulta(TurnoConsulta consulta){
+        colaConsultas.insertar(consulta);
     }
-    public Consulta atenderSiguienteEstudiante(){
-       return (Consulta) colaConsultas.quitar();
+    public TurnoConsulta atenderSiguienteEstudiante(){
+        return (TurnoConsulta) colaConsultas.quitar();
     }
-    public Consulta verSiguienteConsulta(){
-       return (Consulta) colaConsultas.frente();
+    public TurnoConsulta verSiguienteConsulta(){
+        return (TurnoConsulta) colaConsultas.Inicio();
     }
     @Override 
     public String toString(){
-        int totalAsignadas = materiasAsignadas.getTamaño();
+        int totalAsignadas = materiasAsignadas.getCantidad();
         return "Profesor (" + super.toString() + ". Especialidad: "+ especialidad + 
         ". Experiencia: "+ experiencia + ". Materias Asignadas: " + totalAsignadas + ")";
     }

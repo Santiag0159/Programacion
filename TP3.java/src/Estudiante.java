@@ -15,16 +15,29 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     public void setTareasPendientes(Pila tareasPendientes) { this.tareasPendientes = tareasPendientes;}
 
     public void agregarTareaPendiente(String tarea){
-        tareasPendientes.insertar(tarea);
+        try{
+            tareasPendientes.insertar(tarea);
+        } catch (Exception e){
+            System.out.println("Error al agregar tarea pendiente: " + e.getMessage());
+        }
     }
     public void completarUltimaTarea(){
-        tareasPendientes.quitar();
+        try{
+            tareasPendientes.quitar();
+        } catch (Exception e){
+            System.out.println("Error al completar la ultima tarea: " + e.getMessage());
+        }
     }
-    public String verProximatarea(){
-        return tareasPendientes.cima();
+    public String verUltimaTareaPendiente(){
+        try{
+            return (String) tareasPendientes.cimaPila();
+        } catch (Exception e){
+            System.out.println("Error al ver la ultima tarea pendiente: " + e.getMessage());
+            return null;
+        }
     }
     public double calcularPromedioRecursivo(){
-        int totalMaterias = this.materias.getTamaño();
+        int totalMaterias = this.materias.getCantidad();
         if (totalMaterias == 0){
             return 0.0;
         }
@@ -41,7 +54,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     }
 
     public double calcularPromedioIterativo(){
-        int totalMaterias = materias.getTamaño();
+        int totalMaterias = materias.getCantidad();
         if (totalMaterias == 0){
             return 0.0;
         }
@@ -72,7 +85,7 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     @Override
     // si es v o f;
     public String toString(){
-        int totalMaterias = materias != null ? materias.getTamaño() : 0;
+        int totalMaterias = materias != null ? materias.getCantidad() : 0;
         return "Estudiante [" + super.toString() + 
                ", Carrera: " + carrera + 
                ", Promedio: " + promedio + 
@@ -85,5 +98,13 @@ public class Estudiante extends Persona implements MiembroUniversidad{
     @Override
     public String obtenerInformacionCompleta(){
         return this.toString();
+    }
+    public Tarea verProximatarea() {
+        try {
+            return (Tarea) tareasPendientes.cimaPila();
+        } catch (Exception e) {
+            System.out.println("Error al ver la proxima tarea: ");
+        }
+        return null;
     }
 }

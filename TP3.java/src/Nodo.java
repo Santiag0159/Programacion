@@ -7,10 +7,10 @@ public class Nodo{
         this.dato = dato;
         this.siguiente = null;
     }
-    // Getters y Setters
+    // Getters 
     public Object getDato(){return dato;}
-    public void setDato(Object dato){this.dato = dato;}
-
     public Nodo getSiguiente(){return siguiente;}
+    // Setters
+    public void setDato(Object dato){this.dato = dato;}
     public void setSiguiente(Nodo siguiente){this.siguiente = siguiente;}
 }
